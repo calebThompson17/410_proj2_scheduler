@@ -19,7 +19,7 @@ class Scheduler {
 public:
 	Scheduler(std::queue<PCB> &queue, bool preemptive = false, int time_slice =
 			UNINITIALIZED) :	ready_q(&queue), preemptive(preemptive), time_slice(time_slice){	};
-	virtual ~Scheduler() {	};
+	virtual ~Scheduler() { delete ready_q; };
 
 	//add a process, either a new one or one that
 	//had been running on the CPU and has been preempted
@@ -27,6 +27,7 @@ public:
 
 	//get next process
 	virtual PCB getNext() {
+		if (isEmpty()) return NULL;
 		PCB p = ready_q->front();
 		ready_q->pop();
 		return p;
