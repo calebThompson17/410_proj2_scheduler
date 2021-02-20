@@ -23,10 +23,14 @@ public:
 
 	//add a process, either a new one or one that
 	//had been running on the CPU and has been preempted
-	virtual void add(PCB p);
+	virtual void add(PCB p) { ready_q->push(p); }
 
 	//get next process
-	virtual PCB getNext();
+	virtual PCB getNext() {
+		PCB p = ready_q->front();
+		ready_q->pop();
+		return p;
+	}
 
 	//returns true if there are no  jobs in the readyQ
 	//false otherwise
@@ -38,7 +42,11 @@ public:
 	//returns:
 	//true - switch processes
 	//false - do not switch
-	virtual bool   time_to_switch_processes(int tick_count, PCB &p);
+	virtual bool   time_to_switch_processes(int tick_count, PCB &p) {
+		if (p.remaining_cpu_time <= 0) return true;
+		if (preemptive && (time_slice <= tick_count)) return true;
+		return false;
+	}
 
 	// sort  ready_q based on the scheduler algorithm used whenever add(PCB p) is called
 	virtual void sort()=0;		//pure virtual function
