@@ -17,6 +17,9 @@
 bool  Scheduler_RR::time_to_switch_processes(int tick_count, PCB &p)
 { return Scheduler::time_to_switch_processes(tick_count, p); }
 
+//RR - preemptive - no sorting of ready_q needed.
+void Scheduler_RR::sort() {}
+
 //class Scheduler_RR: public Scheduler {
 //public:
 //

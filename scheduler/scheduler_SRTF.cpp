@@ -23,11 +23,11 @@ bool Scheduler_SRTF::time_to_switch_processes(int tick_count, PCB &p) {
 	return Scheduler::time_to_switch_processes(tick_count, p);
 }
 
-// adding the sort method call
-void Scheduler_SRTF::Scheduler::add(PCB p) {
-	Scheduler::add(p);
-	sort();
-}
+//// adding the sort method call
+//void Scheduler_SRTF::Scheduler::add(PCB p) {
+//	Scheduler::add(p);
+//	sort();
+//}
 
 // Sort by remaining_CPU_Time
 bool remainingCPUTimeSort(PCB p1, PCB p2) {
