@@ -48,7 +48,7 @@ public:
 			vec.push_back(ready_q->front());
 			ready_q->pop();
 		}
-		sort(vec.begin(), vec.end(), remainingCPUTimeSort);
+		std::sort(vec.begin(), vec.end(), remainingCPUTimeSort);
 		while (!vec.empty()) {
 			ready_q->push(vec.front());
 			vec.erase(vec.begin());
