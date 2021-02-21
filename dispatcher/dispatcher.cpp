@@ -11,6 +11,8 @@
 #include "constants.h"
 #include "CPU.h"
 
+using namespace std;
+
 class Dispatcher {
 public:
 	Dispatcher(CPU &cpu):cpu(&cpu),is_valid_job_on_cpu(false){};
