@@ -27,7 +27,7 @@ public:
 
 	//get next process
 	virtual PCB getNext() {
-		if (isEmpty()) return NULL;
+		if (isEmpty()) return PCB();
 		PCB p = ready_q->front();
 		ready_q->pop();
 		return p;
